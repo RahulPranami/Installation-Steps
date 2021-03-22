@@ -1,0 +1,47 @@
+#fdisk -l
+#cfdisk /dev/sda
+dos
+partition size 1G
+boot
+partition size 4G
+type 82 linux swap/solaris
+partition leftover
+write
+#mkfs.ext4 /dev/sda1
+#mkswap /dev/sda2
+#swapon /dev/sda2
+#mkfs.ext4 /dev/sda3
+#mount /dev/sda3 /mnt
+#mkdir /mnt/boot /mnt/var /mnt/home
+#mount /dev/sda1 /mnt/boot
+#ping -c 3 google.com
+#pacman -Syy
+#pacstrap /mnt base base-devel linux linux-firmware nano dhcpd net-tools grub
+around 400mb 
+#genfstab -U /mnt >> /mnt/etc/fstab
+#arch-chroot /mnt
+#nano /etc/locale.gen
+uncomment utf 8 en
+#locale-gen
+#echo LANG=en_US.UTF-8  > /etc/locale.conf
+#export LANG=en_US.UTF-8
+#ls /usr/share/zoneinfo
+#ls /usr/share/zoneinfo/Asia
+#ln -s /usr/share/zoneinfo/Asia/Calcutta /etc/localtime
+#hwclock --systehc --utc
+#echo arch2021 > /etc/hostname
+#systemctl enable dhcpcd
+#pacman -S openssh
+#passwd root    (arch)
+#useradd -m -g users -G wheel -s /bin/bash maniac
+#passwd maniac (maniac)
+#nano /etc/sudoers
+[ root ALL=(ALL) ALL
+  maniac ALL=(ALL) ALL ]
+#grub-install /dev/sda
+#grub-mkconfig -o /boot/grub/grub.cfg
+#mkinitcpio -p linux
+#exit
+#umount /mnt/boot
+#umount /mnt 
+#reboot
